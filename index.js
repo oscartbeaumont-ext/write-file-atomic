@@ -104,13 +104,13 @@ async function writeFileAsync (filename, data, options = {}) {
     }
 
     fd = null
-    if (options.chown) {
-      await promisify(fs.chown)(tmpfile, options.chown.uid, options.chown.gid)
-    }
+//     if (options.chown) {
+//       await promisify(fs.chown)(tmpfile, options.chown.uid, options.chown.gid)
+//     }
 
-    if (options.mode) {
-      await promisify(fs.chmod)(tmpfile, options.mode)
-    }
+//     if (options.mode) {
+//       await promisify(fs.chmod)(tmpfile, options.mode)
+//     }
 
     await promisify(fs.rename)(tmpfile, truename)
 
@@ -193,8 +193,8 @@ function writeFileSync (filename, data, options) {
       fs.fsyncSync(fd)
     }
     fs.closeSync(fd)
-    if (options.chown) fs.chownSync(tmpfile, options.chown.uid, options.chown.gid)
-    if (options.mode) fs.chmodSync(tmpfile, options.mode)
+//     if (options.chown) fs.chownSync(tmpfile, options.chown.uid, options.chown.gid)
+//     if (options.mode) fs.chmodSync(tmpfile, options.mode)
     fs.renameSync(tmpfile, filename)
     removeOnExitHandler()
   } catch (err) {
